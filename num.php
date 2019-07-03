@@ -38,8 +38,9 @@ function prize($num, $bit = 3){
 
 
 function go(){
-    $pro = 15;
-    $num = 100;
+    $pro = 15;  //中奖概率 当前 15%
+    $num = 10000; //总次数
+    $offSet = 4; //偏移量
     $z = 0;
     for ($i=0; $i < $num; $i ++){
         if(prize($pro))
@@ -60,7 +61,7 @@ function go(){
      */
     $autoZ = 0;
     for ($i=0; $i < $num; $i ++){
-        $tPro = $pro - (max($autoZ / $num * 100, $pro) - $pro);
+        $tPro = $pro - (max(($autoZ / $num * 100) + $offSet, $pro) - $pro);
 //    echo 'tPro:'.$autoZ / $num * 100 . "\n";
 //    echo 'tPro:'.$tPro . "\n";
         if(prize($tPro))
